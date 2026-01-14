@@ -6,62 +6,84 @@
     var usCulture = new CultureInfo("en-US");
 }
 
-<h2>Detalle del Préstamo</h2>
+<div class="prestamo-details-wrapper">
 
-<hr />
+    <h2 class="section-title">Detalle del Préstamo</h2>
 
-<h4>Resumen</h4>
-<table class="table table-bordered">
-    <tr>
-        <th>Monto</th>
-        <td>@Model.Cantidad.ToString("C", usCulture)</td>
-    </tr>
-    <tr>
-        <th>Meses</th>
-        <td>@Model.Meses</td>
-    </tr>
-    <tr>
-        <th>Tasa Mensual</th>
-        <td>@($"{Model.TasaMensual * 100:F2}%")</td>
-    </tr>
-    <tr>
-        <th>Comisión</th>
-        <td>@Model.Comision.ToString("C", usCulture)</td>
-    </tr>
-    <tr>
-        <th>Pago Mensual</th>
-        <td>@Model.PagoMensual.ToString("C", usCulture)</td>
-    </tr>
-</table>
+    <div class="resumen-card">
+        <div class="resumen-grid">
 
-<hr />
+            <div class="resumen-item">
+                <div class="resumen-label">Monto</div>
+                <div class="resumen-value">
+                    @Model.Cantidad.ToString("C", usCulture)
+                </div>
+            </div>
 
-<h4>Calendario de Amortización</h4>
+            <div class="resumen-item">
+                <div class="resumen-label">Meses</div>
+                <div class="resumen-value">
+                    @Model.Meses
+                </div>
+            </div>
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>Mes</th>
-            <th>Cuota</th>
-            <th>Interés</th>
-            <th>Amortización</th>
-            <th>Saldo Pendiente</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Calendario)
-        {
+            <div class="resumen-item">
+                <div class="resumen-label">Tasa Mensual</div>
+                <div class="resumen-value">
+                    @($"{Model.TasaMensual * 100:F2}%")
+                </div>
+            </div>
+
+            <div class="resumen-item">
+                <div class="resumen-label">Comisión</div>
+                <div class="resumen-value">
+                    @Model.Comision.ToString("C", usCulture)
+                </div>
+            </div>
+
+            <div class="resumen-item">
+                <div class="resumen-label">Pago Mensual</div>
+                <div class="resumen-value">
+                    @Model.PagoMensual.ToString("C", usCulture)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h4 class="section-title">Calendario de Amortización</h4>
+
+    <table class="table table-bordered table-amortizacion">
+        <thead>
             <tr>
-                <td>@item.NumeroMes</td>
-                <td>@item.Cuota.ToString("C", usCulture)</td>
-                <td>@item.Interes.ToString("C", usCulture)</td>
-                <td>@item.Amortizacion.ToString("C", usCulture)</td>
-                <td>@item.SaldoPendiente.ToString("C", usCulture)</td>
+                <th>Mes</th>
+                <th>Cuota</th>
+                <th>Interés</th>
+                <th>Amortización</th>
+                <th>Saldo Pendiente</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Calendario)
+            {
+                <tr>
+                    <td>@item.NumeroMes</td>
+                    <td>@item.Cuota.ToString("C", usCulture)</td>
+                    <td>@item.Interes.ToString("C", usCulture)</td>
+                    <td>@item.Amortizacion.ToString("C", usCulture)</td>
+                    <td>@item.SaldoPendiente.ToString("C", usCulture)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<a asp-action="Create" class="btn btn-success">
-    Nuevo Préstamo
-</a>
+    <a asp-action="Create" class="btn btn-dark mt-3">
+        Nuevo Préstamo
+    </a>
+
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+}
+
