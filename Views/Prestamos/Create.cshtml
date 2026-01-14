@@ -5,10 +5,10 @@
 }
 
 <div class="prestamo-form-wrapper">
-    <div class="card shadow prestamo-card">
+    <div class="prestamo-card">
 
         <div class="prestamo-card-header">
-            <h4 class="mb-0">Nuevo Préstamo</h4>
+            <h4>Nuevo Préstamo</h4>
         </div>
 
         <div class="card-body">
@@ -23,7 +23,7 @@
                         <span class="input-group-text">$</span>
                         <input asp-for="Cantidad"
                                class="form-control prestamo-input"
-                               placeholder="Ej. 10000" />
+                               placeholder="min 1000" />
                     </div>
 
                     <span asp-validation-for="Cantidad"
@@ -37,7 +37,7 @@
 
                     <input asp-for="Meses"
                            class="form-control prestamo-input"
-                           placeholder="Ej. 12" />
+                           placeholder="min 12 meses" />
 
                     <span asp-validation-for="Meses"
                           class="text-danger prestamo-error"></span>
@@ -45,13 +45,13 @@
 
                 <div class="d-grid gap-2">
                     <button type="submit"
-                            class="btn btn-success prestamo-btn-primary">
-                        Calcular Préstamo
+                            class="btn prestamo-btn-primary">
+                        Calcular préstamo
                     </button>
 
                     <a asp-action="Create"
                        class="btn btn-outline-secondary">
-                        Limpiar formulario
+                        Limpiar
                     </a>
                 </div>
 
