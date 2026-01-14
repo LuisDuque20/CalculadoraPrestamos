@@ -1,0 +1,10 @@
+bin/
+obj/
+out/
+
+Migrations/
+
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Prestamo
 {
@@ -12,10 +13,10 @@ public class Prestamo
     [Range(12, int.MaxValue)]
     public int Meses { get; set; }
 
+    [Column(TypeName = "decimal(6,4)")]
     public decimal TasaMensual { get; set; } = 0.0175m;
 
     public decimal Comision { get; set; }
-
     public decimal PagoMensual { get; set; }
 
     public DateTime FechaDeCreacion { get; set; } = DateTime.Now;
