@@ -1,0 +1,69 @@
+/* ==============================
+   DETAILS PRESTAMO
+   ============================== */
+
+body {
+    background-color: #f3f3f3;
+}
+
+.prestamo-details-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 1rem;
+}
+
+/* RESUMEN */
+.resumen-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.resumen-item {
+    border-left: 4px solid #000000;
+    padding-left: 1rem;
+}
+
+.resumen-label {
+    font-size: 0.85rem;
+    color: #555555;
+}
+
+.resumen-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* TABLA */
+.table-amortizacion {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+}
+
+.table-amortizacion th {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+
+.table-amortizacion td {
+    text-align: right;
+}
+
+.table-amortizacion td:first-child {
+    text-align: center;
+}

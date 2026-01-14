@@ -1,32 +1,65 @@
 @model Prestamo
 
 @{
-    ViewData["Title"] = "Crear Prestamo";
+    ViewData["Title"] = "Nuevo Préstamo";
 }
 
-<h2>Crear Prestamo</h2>
+<div class="prestamo-form-wrapper">
+    <div class="prestamo-card">
 
-<form asp-action="Create" method="post">
-    <div class="form-group mb-3">
-        <label asp-for="Cantidad" class="form-label"></label>
-        <input asp-for="Cantidad" class="form-control" />
-        <span asp-validation-for="Cantidad" class="text-danger"></span>
+        <div class="prestamo-card-header">
+            <h4>Nuevo Préstamo</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create" method="post" novalidate>
+
+                <div class="mb-3">
+                    <label asp-for="Cantidad" class="form-label prestamo-label">
+                        Monto del préstamo
+                    </label>
+
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="Cantidad"
+                               class="form-control prestamo-input"
+                               placeholder="min 1000" />
+                    </div>
+
+                    <span asp-validation-for="Cantidad"
+                          class="text-danger prestamo-error"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Meses" class="form-label prestamo-label">
+                        Plazo (meses)
+                    </label>
+
+                    <input asp-for="Meses"
+                           class="form-control prestamo-input"
+                           placeholder="min 12 meses" />
+
+                    <span asp-validation-for="Meses"
+                          class="text-danger prestamo-error"></span>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit"
+                            class="btn prestamo-btn-primary">
+                        Calcular préstamo
+                    </button>
+
+                    <a asp-action="Create"
+                       class="btn btn-outline-secondary">
+                        Limpiar
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
     </div>
-
-    <div class="form-group mb-3">
-        <label asp-for="Meses" class="form-label"></label>
-        <input asp-for="Meses" class="form-control" />
-        <span asp-validation-for="Meses" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">
-        Calcular Préstamo
-    </button>
-
-    <a asp-action="Index" class="btn btn-secondary">
-        Cancelar
-    </a>
-</form>
+</div>
 
 @section Scripts {
     @{
