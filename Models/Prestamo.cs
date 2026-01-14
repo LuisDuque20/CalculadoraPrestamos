@@ -10,7 +10,7 @@ public class Prestamo
     public decimal Cantidad { get; set; }
 
     [Required]
-    [Range(12, int.MaxValue)]
+    [Range(12, 36)]
     public int Meses { get; set; }
 
     [Column(TypeName = "decimal(6,4)")]
