@@ -51,20 +51,30 @@ public class PrestamosController : Controller
         for (int mes = 1; mes <= meses; mes++)
         {
             decimal interes = Math.Round(saldo * tasa, 2);
-            decimal amortizacion = Math.Round(prestamo.PagoMensual - interes, 2);
+            decimal amortizacion;
+            decimal cuota;
 
-            if (amortizacion <= 0)
-                throw new Exception("La cuota no cubre el interés mensual.");
-
-            saldo = Math.Round(saldo - amortizacion, 2);
+            //Ajuste para el ultimo mes
+            if (mes == meses)
+            {
+                amortizacion = saldo;
+                cuota = Math.Round(amortizacion + interes, 2);
+                saldo = 0;
+            }
+            else
+            {
+                cuota = prestamo.PagoMensual;
+                amortizacion = Math.Round(cuota - interes, 2);
+                saldo = Math.Round(saldo - amortizacion, 2);
+            }
 
             prestamo.Calendario.Add(new DetallePrestamo
             {
                 NumeroMes = mes,
-                Cuota = prestamo.PagoMensual,
+                Cuota = cuota,
                 Interes = interes,
                 Amortizacion = amortizacion,
-                SaldoPendiente = saldo < 0 ? 0 : saldo
+                SaldoPendiente = saldo
             });
         }
 
